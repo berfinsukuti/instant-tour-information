@@ -1,0 +1,34 @@
+.map-container {
+  height: 100vh;
+  width: 100%;
+}
+
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+}
+.leaflet-popup-content-wrapper {
+  background-color: #fff; /* Arka plan rengi */
+  padding: 10px; /* İç boşluk */
+  border-radius: 8px; /* Köşe yuvarlaklığı */
+}
+
+.leaflet-popup-content {
+  font-size: 14px; /* Yazı boyutu */
+  line-height: 1.4; /* Satır yüksekliği */
+}
+.map-container {
+  height: 100vh;
+  width: 100%;
+}
+
+.leaflet-popup-content-wrapper {
+  max-width: 300px; /* Pop-up genişliğini artırın */
+}
+
+.leaflet-popup-content img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 10px 0;
+}

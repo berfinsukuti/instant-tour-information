@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tur Haritası</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+</head>
+<body>
+  <div id="root"></div>
+  <!-- <div id="map" style="width: 100%; height: 600px;"></div> -->
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+    const map = L.map('map').setView([20.0, 10.0], 2);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+    }).addTo(map);
+
+    axios.get('http://localhost:8000/api/turlar/')
+      .then(response => {
+        response.data.forEach(tur => {
+          L.marker([tur.coords.lat, tur.coords.lng])
+            .addTo(map)
+            .bindPopup(`<b>${tur.tur_adi}</b><br>${tur.sehir}`);
+        });
+      })
+      .catch(error => {
+        console.error('There was an error fetching the turlar!', error);
+      });
+  </script>
+</body>
+</html>
